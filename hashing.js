@@ -16,34 +16,38 @@ var poem = [
 
 // PART 1: Blockchain Creation 
 
+let blockChain = [
+    {
+    index: 0,
+    timeStamp: Date.now(),
+    prevHash: '000000',
+    data: 'This is the genesis block',
+    hash: '000000'
+  }
+];
+
 function createBlock(chain, data){
     const len = chain.length;
+    
     this.index = len;
-
     this.timeStamp = Date.now();
-    if (len === 0){
-        this.prevHash =  "000000";
-        this.data = "This is the genesis block";
-        this.hash =  "000000";
-    } else {
-        this.prevHash = chain[len-1]["hash"];
-        this.data = data;
-        this.hash = crypto.createHash('sha256').update(JSON.stringify(this)).digest('hex');
-    }
+    this.prevHash = chain[len-1]["hash"];
+    this.data = data;
+    this.hash = crypto.createHash('sha256').update(JSON.stringify(this)).digest('hex');
    
 }
 
 function createChain(input) {
-    blockChain = [];
+
     poem.forEach(element => {
         newBlock = new createBlock(blockChain, element);
         blockChain.push(newBlock);
     });
+    console.log(blockChain);
 
-    return blockChain;
 }
 
-blockChain = createChain(poem);
+createChain(poem);
 
 
 // PART 2: Blockchain Verification
