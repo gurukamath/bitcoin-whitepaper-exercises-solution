@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!node
 
 const path = require("path");
 const fs = require("fs");

@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!node
 
 const crypto = require("crypto");
 const _ = require("lodash");

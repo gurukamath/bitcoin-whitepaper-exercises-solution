@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!node
 "use strict";
 
 var path = require("path");
