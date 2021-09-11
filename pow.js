@@ -15,7 +15,7 @@ var poem = [
 	"especially yours can heal a frozen heart",
 ];
 
-var difficulty = 10;
+var difficulty = 6;
 
 var Blockchain = {
 	blocks: [],
@@ -65,13 +65,10 @@ function blockHash(bl) {
 }
 
 function hashIsLowEnough(hash) {
-	const compareChars = Math.ceil(difficulty/4) + 1;
-    // const zeroSuffixes = Math.min(compareChars*4 - difficulty - 1, 0);
-    // const zeroPrefixes = difficulty;
+	const compareChars = Math.floor(difficulty/4) + 1;
 
 	const threshold = Number('0b'.concat('0'.repeat(difficulty)).concat('1').padEnd('0', compareChars*4));
-	// console.log(`Difficulty: ${difficulty}; threshold: ${threshold});`);
-    
+
     const compareHash = Number(`0x${hash.substr(0,compareChars)}`);
 
 	return compareHash <= threshold;
